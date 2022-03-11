@@ -11,4 +11,4 @@ public class MenuOfNotes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
     }
-}
+} //  :)
