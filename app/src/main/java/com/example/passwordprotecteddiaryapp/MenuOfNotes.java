@@ -1,10 +1,14 @@
 package com.example.passwordprotecteddiaryapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,11 +19,20 @@ public class MenuOfNotes extends AppCompatActivity {
     ListView listView;
     ArrayList list;
     ArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
-        /*searchView = findViewById(R.id.searchView);
+    }
+
+    public void openTitleScreen(View view)
+    {
+        Intent intent = new Intent(MenuOfNotes.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /*searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
         list = new ArrayList<>();
         list.add("Apple");
@@ -50,5 +63,6 @@ public class MenuOfNotes extends AppCompatActivity {
                 return false;
             }
         });*/
-    }
+
+
 }

@@ -10,4 +10,5 @@
     <string name="confirm">CONFIRM</string>
     <string name="errorPassword"> Invalid Password </string>
     <string name="goodPassword"> Successful Password Change </string>
+    <string name="back2">Back</string>
 </resources>

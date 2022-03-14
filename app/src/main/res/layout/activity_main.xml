@@ -24,7 +24,7 @@
         android:id="@+id/imageView3"
         android:layout_width="135dp"
         android:layout_height="192dp"
-        android:layout_marginEnd="332dp"
+        android:layout_marginEnd="324dp"
         android:background="@color/brown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,12 +36,12 @@
         android:id="@+id/imageView4"
         android:layout_width="135dp"
         android:layout_height="192dp"
-        android:layout_marginEnd="332dp"
+        android:layout_marginEnd="328dp"
         android:background="@color/brown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706"
+        app:layout_constraintVertical_bias="0.703"
         app:srcCompat="@drawable/picture1" />
 
     <TextView
