@@ -1,6 +1,7 @@
 package com.example.passwordprotecteddiaryapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
@@ -29,19 +33,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
     }
 
-    public void openNotesMenu()
+    public void createChangePasswordDialog(View v)
     {
-        Intent intent = new Intent(MainActivity.this, MenuOfNotes.class);
-        startActivity(intent);
-    }
-
-    public void openChangePassword()
-    {
-        Intent intent = new Intent(MainActivity.this, Password.class);
-        startActivity(intent);
-    }
-
-    public void createChangePasswordDialog(View v) throws IOException {
         dialogBuilder = new AlertDialog.Builder(this);
         final View popup = getLayoutInflater().inflate(R.layout.change_password_prompt, null);
 
@@ -53,29 +46,89 @@ public class MainActivity extends AppCompatActivity
         dialog = dialogBuilder.create();
         dialog.show();
 
-        if (password.getText().toString().length() == 0 || password.getText().toString().length() > 15 || password.getText().toString().equals(""))
+        confirm.setOnClickListener(new View.OnClickListener()
         {
-            confirm.setOnClickListener(view -> message.setText("Invalid Password"));
-        }
-
-        else
-        {
-            File root = new File(Environment.getExternalStorageDirectory(), "/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project");
-            if (!root.exists())
+            public void onClick(View view)
             {
-                root.mkdir();
+                Context context = getApplicationContext();
+                File location =  context.getFilesDir();
+                File password_file = new File(location, "Password.txt");
+
+                if (!password.getText().toString().equals(""))
+                {
+                    FileOutputStream stream;
+                    try
+                    {
+                        stream = new FileOutputStream(password_file);
+                        stream.write(password.getText().toString().getBytes());
+                        stream.close();
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    message.setText("Successful Password Change");
+                }
+
+                else
+                {
+                    message.setText("Please Enter a Password");
+                }
             }
-
-            File path = new File(root, "Password.txt");
-
-            FileWriter filewriter = new FileWriter(path);
-            filewriter.append(password.getText().toString());
-            filewriter.flush();
-            filewriter.close();
-
-            confirm.setOnClickListener(view -> message.setText("Successful Password Change"));
-            Password pass = new Password();
-            confirm.setOnClickListener(view -> pass.openTitleScreen());
         }
+        );
+    }
+
+    public void createEnterPasswordDialog(View v)
+    {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popup = getLayoutInflater().inflate(R.layout.enter_password_prompt, null);
+
+        EditText password = (EditText) popup.findViewById(R.id.editTextTextPassword);
+        Button confirm = (Button) popup.findViewById(R.id.confirm);
+        TextView message = (TextView) popup.findViewById(R.id.passwordErrorMessage);
+
+        dialogBuilder.setView(popup);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        confirm.setOnClickListener(new View.OnClickListener()
+        {
+            final Context context = getApplicationContext();
+            final File location =  context.getFilesDir();
+            final File password_file = new File(location, "Password.txt");
+
+            public void onClick(View view)
+            {
+                int length = (int) password_file.length();
+
+                byte[] bytes = new byte[length];
+
+                FileInputStream reader;
+                try {
+                    reader = new FileInputStream(password_file);
+                    reader.read(bytes);
+                    reader.close();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+
+                String current_password = new String(bytes);
+
+                if (password.getText().toString().equals(current_password))
+                {
+                    Intent intent = new Intent(MainActivity.this, MenuOfNotes.class);
+                    startActivity(intent);
+                }
+
+                else
+                {
+                    message.setText("Incorrect Password: Please Try Again");
+                }
+            }
+        }
+        );
     }
 }

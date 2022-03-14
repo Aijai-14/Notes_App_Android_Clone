@@ -87,6 +87,7 @@
         android:textColor="@color/gray"
         android:textSize="10pt"
         android:textStyle="italic"
+        android:onClick="createEnterPasswordDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

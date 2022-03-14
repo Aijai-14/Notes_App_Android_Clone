@@ -6,7 +6,7 @@
     <string name="add_note">+</string>
     <string name="delete_note">-</string>
     <string name="changeSet_password">Change/Set Password</string>
-    <string name="change_password">CHANGE PASSWORD</string>
+    <string name="change_password">CHANGE/SET PASSWORD</string>
     <string name="confirm">CONFIRM</string>
     <string name="errorPassword"> Invalid Password </string>
     <string name="goodPassword"> Successful Password Change </string>

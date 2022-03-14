@@ -19,7 +19,7 @@ public class MenuOfNotes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
-        searchView = findViewById(R.id.searchView);
+        /*searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
         list = new ArrayList<>();
         list.add("Apple");
@@ -49,6 +49,6 @@ public class MenuOfNotes extends AppCompatActivity {
                 adapter.getFilter().filter(newText);
                 return false;
             }
-        });
+        });*/
     }
 }
