@@ -19,7 +19,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" >
-
     </ListView>
 
     <SearchView
@@ -37,9 +36,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/backButton"
         android:layout_width="80dp"
+        android:background="@color/white"
         android:layout_height="64dp"
         android:adjustViewBounds="true"
         android:onClick="openTitleScreen"
@@ -47,6 +47,30 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/arrow_simple_icon_vector_260nw_1329099776" />
+        android:contentDescription="@string/return_to_diary_cover"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <ImageView
+        android:id="@+id/addNoteButton"
+        android:layout_width="165dp"
+        android:onClick="createAddNoteDialog"
+        android:layout_height="64dp"
+        android:background="@color/black"
+        android:contentDescription="@string/add_note2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/deleteNoteButton"
+        android:layout_width="166dp"
+        android:layout_height="64dp"
+        android:background="@color/black"
+        android:contentDescription="@string/delete_notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addNoteButton"
+        app:srcCompat="@android:drawable/ic_delete"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

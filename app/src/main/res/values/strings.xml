@@ -2,7 +2,6 @@
     <string name="app_name">Password Protected Diary App</string>
     <string name="welcome_to_your_diary">WELCOME TO YOUR DIARY</string>
     <string name="enter_password">ENTER PASSWORD</string>
-    <string name="back"><![CDATA[<--]]></string>
     <string name="add_note">+</string>
     <string name="delete_note">-</string>
     <string name="changeSet_password">Change/Set Password</string>
@@ -11,4 +10,8 @@
     <string name="errorPassword"> Invalid Password </string>
     <string name="goodPassword"> Successful Password Change </string>
     <string name="back2">Back</string>
+    <string name="return_to_diary_cover">Return to Diary Cover</string>
+    <string name="delete_notes">Delete Notes</string>
+    <string name="add_note2">Add Note</string>
+    <string name="enter_title_of_note">ENTER TITLE OF NOTE</string>
 </resources>

@@ -4,24 +4,35 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MenuOfNotes extends AppCompatActivity {
+public class MenuOfNotes extends AppCompatActivity
+{
     SearchView searchView;
     ListView listView;
     ArrayList list;
     ArrayAdapter adapter;
 
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
     }
@@ -31,6 +42,39 @@ public class MenuOfNotes extends AppCompatActivity {
         Intent intent = new Intent(MenuOfNotes.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void createAddNoteDialog(View view)
+    {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popup = getLayoutInflater().inflate(R.layout.add_note_prompt, null);
+
+        EditText title = (EditText) popup.findViewById(R.id.enterTitle);
+        Button confirm = (Button) popup.findViewById(R.id.confirm3);
+        TextView errorMessage = (TextView) popup.findViewById(R.id.titleErrorMessage);
+
+        dialogBuilder.setView(popup);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        confirm.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+               // if (!title.getText().toString().equals(""))
+                {
+
+                }
+
+               // else
+                {
+                    errorMessage.setText("Please Enter a Name for Your New Note");
+                }
+            }
+        });
+    }
+
+
+
 
     /*searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
@@ -63,6 +107,5 @@ public class MenuOfNotes extends AppCompatActivity {
                 return false;
             }
         });*/
-
 
 }
