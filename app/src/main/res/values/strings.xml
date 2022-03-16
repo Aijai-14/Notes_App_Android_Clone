@@ -14,4 +14,6 @@
     <string name="delete_notes">Delete Notes</string>
     <string name="add_note2">Add Note</string>
     <string name="enter_title_of_note">ENTER TITLE OF NOTE</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_enter_button">Enter</string>
 </resources>

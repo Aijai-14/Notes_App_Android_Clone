@@ -37,6 +37,9 @@ public class MenuOfNotes extends AppCompatActivity
         setContentView(R.layout.activity_menu_of_notes);
     }
 
+
+
+
     public void openTitleScreen(View view)
     {
         Intent intent = new Intent(MenuOfNotes.this, MainActivity.class);
