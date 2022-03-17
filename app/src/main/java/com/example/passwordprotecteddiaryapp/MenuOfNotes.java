@@ -59,22 +59,28 @@ public class MenuOfNotes extends AppCompatActivity
         dialog = dialogBuilder.create();
         dialog.show();
 
-        confirm.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-               // if (!title.getText().toString().equals(""))
+        confirm.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (title.getText().toString().equals(""))
                 {
-
+                    errorMessage.setText("Please Enter a Name for Your Note");
                 }
 
-               // else
+                else
                 {
-                    errorMessage.setText("Please Enter a Name for Your New Note");
+                    NoteEditer note = new NoteEditer(title.getText().toString());
+                    note.onCreate();
                 }
             }
         });
     }
+
+    public void openDeletionScreen(View view)
+    {
+        Intent intent = new Intent(MenuOfNotes.this, NoteDeleter.class);
+        startActivity(intent);
+    }
+
 
 
 

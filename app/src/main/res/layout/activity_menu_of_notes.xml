@@ -49,6 +49,7 @@
         android:id="@+id/deleteNoteButton"
         android:layout_width="166dp"
         android:layout_height="64dp"
+        android:onClick="openDeletionScreen"
         android:background="@color/black"
         android:contentDescription="@string/delete_notes"
         app:layout_constraintBottom_toBottomOf="parent"
