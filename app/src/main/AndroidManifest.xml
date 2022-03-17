@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PasswordProtectedDiaryApp">
         <activity
-            android:name=".NoteEditer"
+            android:name=".NoteEditor"
             android:exported="false" />
         <activity
             android:name=".NoteDeleter"

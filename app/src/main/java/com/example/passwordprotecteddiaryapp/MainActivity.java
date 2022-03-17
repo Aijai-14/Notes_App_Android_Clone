@@ -13,11 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -44,34 +41,30 @@ public class MainActivity extends AppCompatActivity
         dialog = dialogBuilder.create();
         dialog.show();
 
-        confirm.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
+        confirm.setOnClickListener(view -> {
+            Context context = getApplicationContext();
+            File location =  context.getFilesDir();
+            File password_file = new File(location, "Password.txt");
+
+            if (!password.getText().toString().equals(""))
             {
-                Context context = getApplicationContext();
-                File location =  context.getFilesDir();
-                File password_file = new File(location, "Password.txt");
-
-                if (!password.getText().toString().equals(""))
+                FileOutputStream stream;
+                try
                 {
-                    FileOutputStream stream;
-                    try
-                    {
-                        stream = new FileOutputStream(password_file);
-                        stream.write(password.getText().toString().getBytes());
-                        stream.close();
-                    }
-                    catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    message.setText("Successful Password Change");
+                    stream = new FileOutputStream(password_file);
+                    stream.write(password.getText().toString().getBytes());
+                    stream.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                else
-                {
-                    message.setText("Please Enter a Password");
-                }
+                message.setText("Successful Password Change");
+            }
+
+            else
+            {
+                message.setText("Please Enter a Password");
             }
         }
         );
@@ -129,6 +122,4 @@ public class MainActivity extends AppCompatActivity
         }
         );
     }
-
-
 }

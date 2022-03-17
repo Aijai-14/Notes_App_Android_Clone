@@ -1,32 +1,17 @@
 package com.example.passwordprotecteddiaryapp;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuOfNotes extends AppCompatActivity
 {
-    SearchView searchView;
-    ListView listView;
-    ArrayList list;
-    ArrayAdapter adapter;
-
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
@@ -37,16 +22,13 @@ public class MenuOfNotes extends AppCompatActivity
         setContentView(R.layout.activity_menu_of_notes);
     }
 
-
-
-
     public void openTitleScreen(View view)
     {
         Intent intent = new Intent(MenuOfNotes.this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void createAddNoteDialog(View view)
+    public void createAddNoteDialog(View v)
     {
         dialogBuilder = new AlertDialog.Builder(this);
         final View popup = getLayoutInflater().inflate(R.layout.add_note_prompt, null);
@@ -59,19 +41,13 @@ public class MenuOfNotes extends AppCompatActivity
         dialog = dialogBuilder.create();
         dialog.show();
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (title.getText().toString().equals(""))
-                {
-                    errorMessage.setText("Please Enter a Name for Your Note");
-                }
-
-                else
-                {
-                    NoteEditer note = new NoteEditer(title.getText().toString());
-                    note.onCreate();
-                }
+        confirm.setOnClickListener(view -> {
+            if (title.getText().toString().equals(""))
+            {
+                errorMessage.setText("Please Enter a Name for Your Note");
             }
+
+            //else
         });
     }
 
@@ -116,5 +92,4 @@ public class MenuOfNotes extends AppCompatActivity
                 return false;
             }
         });*/
-
 }

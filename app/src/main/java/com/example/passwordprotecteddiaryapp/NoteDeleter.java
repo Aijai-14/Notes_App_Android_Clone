@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class NoteDeleter extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
