@@ -4,22 +4,36 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuOfNotes extends AppCompatActivity
 {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private List<NoteEditor> noteList = new ArrayList<>();
+    private ListView listview;
+    private List<String> notes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
+
+        listview = (ListView) findViewById(R.id.listView);
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notes);
+
+        listview.setAdapter(arrayAdapter);
     }
 
     public void openTitleScreen(View view)
@@ -47,7 +61,18 @@ public class MenuOfNotes extends AppCompatActivity
                 errorMessage.setText("Please Enter a Name for Your Note");
             }
 
-            //else
+            else
+            {
+                NoteEditor note = new NoteEditor(title.getText().toString());
+                TextView noteName = (TextView) note.findViewById(R.id.Notename);
+
+                noteName.setText(title.getText().toString());
+
+                noteList.add(note);
+                addNoteLabel(title.getText().toString());
+
+                openNote(null);
+            }
         });
     }
 
@@ -57,39 +82,14 @@ public class MenuOfNotes extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void openNote(View view)
+    {
+        Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
+        startActivity(intent);
+    }
 
-
-
-
-    /*searchView = findViewById(R.id.searchView);
-        listView = findViewById(R.id.listView);
-        list = new ArrayList<>();
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Pineapple");
-        list.add("Orange");
-        list.add("Mango");
-        list.add("Grapes");
-        list.add("Lemon");
-        list.add("Melon");
-        list.add("Watermelon");
-        list.add("Papaya");
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if(list.contains(query)){
-                    adapter.getFilter().filter(query);
-                }else{
-                    Toast.makeText(MenuOfNotes.this, "No Match found",Toast.LENGTH_LONG).show();
-                }
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });*/
+    public void addNoteLabel(String label)
+    {
+        notes.add(label);
+    }
 }

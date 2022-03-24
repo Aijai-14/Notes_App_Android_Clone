@@ -16,6 +16,7 @@
         android:inputType="text"
         android:maxLength="50"
         android:hint="@string/enter_title_of_note"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

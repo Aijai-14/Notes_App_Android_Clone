@@ -16,4 +16,6 @@
     <string name="enter_title_of_note">ENTER TITLE OF NOTE</string>
     <string name="menu_search">Search</string>
     <string name="menu_enter_button">Enter</string>
+    <string name="enter_text">Enter Text</string>
+    <string name="save">SAVE</string>
 </resources>
