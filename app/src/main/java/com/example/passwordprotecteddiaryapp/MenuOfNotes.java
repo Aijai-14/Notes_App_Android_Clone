@@ -17,11 +17,8 @@ import java.util.List;
 
 public class MenuOfNotes extends AppCompatActivity
 {
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
-    private List<NoteEditor> noteList = new ArrayList<>();
-    private ListView listview;
-    private List<String> notes = new ArrayList<>();
+    private final List<NoteEditor> noteList = new ArrayList<>();
+    private final List<String> notes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,11 +26,37 @@ public class MenuOfNotes extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
 
-        listview = (ListView) findViewById(R.id.listView);
+        ListView listview = (ListView) findViewById(R.id.listView);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, notes);
 
         listview.setAdapter(arrayAdapter);
+
+        listview.setOnItemClickListener((adapter, view, location, id) -> {
+            for (NoteEditor n : noteList)
+            {
+                if (n.getName().equals(notes.get(location)))
+                {
+                    View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
+                    TextView noteName = (TextView) editor.findViewById(R.id.Notename);
+                    TextView notes = (TextView) editor.findViewById(R.id.Notetext);
+
+                    noteName.setText(n.getName());
+
+                    StringBuilder note = new StringBuilder();
+                    for (String s : n.getText())
+                    {
+                        note.append(s).append(" ");
+                    }
+
+                    notes.setText(note);
+
+                    Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
+                    startActivity(intent);
+                    break;
+                }
+            }
+        });
     }
 
     public void openTitleScreen(View view)
@@ -44,7 +67,7 @@ public class MenuOfNotes extends AppCompatActivity
 
     public void createAddNoteDialog(View v)
     {
-        dialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         final View popup = getLayoutInflater().inflate(R.layout.add_note_prompt, null);
 
         EditText title = (EditText) popup.findViewById(R.id.enterTitle);
@@ -52,7 +75,7 @@ public class MenuOfNotes extends AppCompatActivity
         TextView errorMessage = (TextView) popup.findViewById(R.id.titleErrorMessage);
 
         dialogBuilder.setView(popup);
-        dialog = dialogBuilder.create();
+        AlertDialog dialog = dialogBuilder.create();
         dialog.show();
 
         confirm.setOnClickListener(view -> {
@@ -64,14 +87,17 @@ public class MenuOfNotes extends AppCompatActivity
             else
             {
                 NoteEditor note = new NoteEditor(title.getText().toString());
-                TextView noteName = (TextView) note.findViewById(R.id.Notename);
+                View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
+
+                TextView noteName = (TextView) editor.findViewById(R.id.Notename);
 
                 noteName.setText(title.getText().toString());
 
                 noteList.add(note);
-                addNoteLabel(title.getText().toString());
+                notes.add(title.getText().toString());
 
-                openNote(null);
+                Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
+                startActivity(intent);
             }
         });
     }
@@ -80,16 +106,5 @@ public class MenuOfNotes extends AppCompatActivity
     {
         Intent intent = new Intent(MenuOfNotes.this, NoteDeleter.class);
         startActivity(intent);
-    }
-
-    public void openNote(View view)
-    {
-        Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
-        startActivity(intent);
-    }
-
-    public void addNoteLabel(String label)
-    {
-        notes.add(label);
     }
 }
