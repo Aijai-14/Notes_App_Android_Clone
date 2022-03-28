@@ -27,10 +27,6 @@ public class MenuOfNotes extends AppCompatActivity
     private final List<NoteEditor> noteList = new ArrayList<>();
     private final List<String> notes = new ArrayList<>();
 
-    Context context = getApplicationContext();
-    File location =  context.getFilesDir();
-    File note_names = new File(location, "names.txt");
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +34,10 @@ public class MenuOfNotes extends AppCompatActivity
         setContentView(R.layout.activity_menu_of_notes);
 
         ListView listview = (ListView) findViewById(R.id.listView);
+
+        Context context = getApplicationContext();
+        File parent =  context.getFilesDir();
+        File note_names = new File(parent, "names.txt");
 
         int length = (int) note_names.length();
 
@@ -110,6 +110,10 @@ public class MenuOfNotes extends AppCompatActivity
         dialog.show();
 
         confirm.setOnClickListener(view -> {
+            Context context = getApplicationContext();
+            File parent =  context.getFilesDir();
+            File note_names = new File(parent, "names.txt");
+
             if (title.getText().toString().equals(""))
             {
                 errorMessage.setText("Please Enter a Name for Your Note");
