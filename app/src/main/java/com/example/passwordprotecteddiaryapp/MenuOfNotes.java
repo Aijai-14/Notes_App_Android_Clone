@@ -36,8 +36,24 @@ public class MenuOfNotes extends AppCompatActivity
         ListView listview = (ListView) findViewById(R.id.listView);
 
         Context context = getApplicationContext();
-        File parent =  context.getFilesDir();
-        File note_names = new File(parent, "names.txt");
+        File parent = context.getFilesDir();
+        File note_names = null;
+        File[] files = parent.listFiles();
+
+        // Remove this loop if it crashes and files array if it crashes
+        for (int i = 0; i < files.length; i++)
+        {
+            if (files[i].getName() == "names.txt")
+            {
+                note_names = files[i];
+            }
+        }
+        // If note_names has not been updated, create a new file to store the names
+        if (note_names == null)
+        {
+            note_names = new File(parent, "names.txt");
+        }
+
 
         int length = (int) note_names.length();
 
@@ -118,19 +134,22 @@ public class MenuOfNotes extends AppCompatActivity
             {
                 errorMessage.setText("Please Enter a Name for Your Note");
             }
-
             else
             {
+                // Create a new file txt file for the new note
+                File newNote = new File(parent, title.getText().toString() + ".txt" );
+
+                // Create new instance of the note editor
                 NoteEditor note = new NoteEditor(title.getText().toString());
                 View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
-
                 TextView noteName = (TextView) editor.findViewById(R.id.Notename);
-
                 noteName.setText(title.getText().toString());
 
+                // Add the instance into an arraylist
                 noteList.add(note);
-                String s = title.getText().toString() + " ";
 
+                // Write the name of the file into names.txt
+                String s = title.getText().toString() + " ";
                 FileOutputStream stream;
                 try
                 {
