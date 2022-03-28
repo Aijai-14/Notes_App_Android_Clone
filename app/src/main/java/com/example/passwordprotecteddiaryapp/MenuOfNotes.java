@@ -1,6 +1,7 @@
 package com.example.passwordprotecteddiaryapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +13,23 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MenuOfNotes extends AppCompatActivity
 {
     private final List<NoteEditor> noteList = new ArrayList<>();
     private final List<String> notes = new ArrayList<>();
+
+    Context context = getApplicationContext();
+    File location =  context.getFilesDir();
+    File note_names = new File(location, "names.txt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +38,26 @@ public class MenuOfNotes extends AppCompatActivity
         setContentView(R.layout.activity_menu_of_notes);
 
         ListView listview = (ListView) findViewById(R.id.listView);
+
+        int length = (int) note_names.length();
+
+        byte[] bytes = new byte[length];
+
+        FileInputStream reader;
+        try {
+            reader = new FileInputStream(note_names);
+            reader.read(bytes);
+            reader.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        String names = new String(bytes);
+        String[] names_list = names.split(" ");
+
+        notes.addAll(Arrays.asList(names_list));
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, notes);
 
@@ -94,7 +125,18 @@ public class MenuOfNotes extends AppCompatActivity
                 noteName.setText(title.getText().toString());
 
                 noteList.add(note);
-                notes.add(title.getText().toString());
+                String s = title.getText().toString() + " ";
+
+                FileOutputStream stream;
+                try
+                {
+                    stream = new FileOutputStream(note_names);
+                    stream.write(s.getBytes());
+                    stream.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
                 startActivity(intent);
