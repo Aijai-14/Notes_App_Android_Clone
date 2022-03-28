@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -48,21 +51,41 @@ public class MenuOfNotes extends AppCompatActivity
 
         int length = (int) note_names.length();
 
-        byte[] bytes = new byte[length];
+//        byte[] bytes = new byte[length];
 
-        FileInputStream reader;
-        try {
-            reader = new FileInputStream(note_names);
-            reader.read(bytes);
-            reader.close();
+        // Read the contents within note_names
+        FileReader fileReader = null;
+        try
+        {
+            fileReader = new FileReader(note_names.getAbsolutePath());
         }
-        catch (IOException e)
+        catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
+        BufferedReader bufferReader = new BufferedReader(fileReader);
+        String[] names_list = new String[0];
+        try
+        {
+            names_list = bufferReader.readLine().split(", ");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        ;
 
-        String names = new String(bytes);
-        String[] names_list = names.split(" ");
+//        FileInputStream reader;
+//        try {
+//            reader = new FileInputStream(note_names);
+//            reader.read(bytes);
+//            reader.close();
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+
+//        String names = new String(bytes);
 
         notes.addAll(Arrays.asList(names_list));
 
@@ -145,7 +168,7 @@ public class MenuOfNotes extends AppCompatActivity
                 noteList.add(note);
 
                 // Write the name of the file into names.txt
-                String s = title.getText().toString() + " ";
+                String s = title.getText().toString() + ", ";
                 FileOutputStream stream;
                 try
                 {
