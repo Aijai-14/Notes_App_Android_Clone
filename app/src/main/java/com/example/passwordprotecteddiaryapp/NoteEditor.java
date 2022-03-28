@@ -63,4 +63,6 @@ public class NoteEditor extends AppCompatActivity
 
         this.text = wordList;
     }
+
+
 }

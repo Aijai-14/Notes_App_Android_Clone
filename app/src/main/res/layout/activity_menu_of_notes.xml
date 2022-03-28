@@ -16,10 +16,11 @@
         android:dividerHeight="2dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@id/addNoteButton"
-        app:layout_constraintTop_toBottomOf="@id/editTextSearch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/backButton"
