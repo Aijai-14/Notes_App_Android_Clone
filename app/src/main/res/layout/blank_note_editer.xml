@@ -7,20 +7,20 @@
 
     <MultiAutoCompleteTextView
         android:id="@+id/Notetext"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/andika"
+        android:labelFor="@id/Notetext"
         android:minHeight="48dp"
         android:scrollbars="vertical"
-        android:labelFor="@id/Notetext"
         android:text="@string/enter_text"
-        android:fontFamily="@font/andika"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/Notename"
@@ -64,5 +64,25 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="@string/menu_enter_button"
+        android:textColor="@color/green2"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Notename" />
+
+    <ListView
+        android:id="@+id/notes"
+        android:layout_width="409dp"
+        android:layout_height="584dp"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Notetext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
