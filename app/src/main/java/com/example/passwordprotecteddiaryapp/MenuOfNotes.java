@@ -37,23 +37,14 @@ public class MenuOfNotes extends AppCompatActivity
 
         Context context = getApplicationContext();
         File parent = context.getFilesDir();
-        File note_names = null;
         File[] files = parent.listFiles();
 
-        // Remove this loop if it crashes and files array if it crashes
-        for (int i = 0; i < files.length; i++)
-        {
-            if (files[i].getName() == "names.txt")
-            {
-                note_names = files[i];
-            }
-        }
-        // If note_names has not been updated, create a new file to store the names
+        File note_names = checkTxtFileNames(files);
+        // If note_names has not been updated, create a new txt file to store the names
         if (note_names == null)
         {
             note_names = new File(parent, "names.txt");
         }
-
 
         int length = (int) note_names.length();
 
@@ -128,7 +119,12 @@ public class MenuOfNotes extends AppCompatActivity
         confirm.setOnClickListener(view -> {
             Context context = getApplicationContext();
             File parent =  context.getFilesDir();
-            File note_names = new File(parent, "names.txt");
+
+            File note_names = checkTxtFileNames(parent.listFiles());
+            if (note_names == null)
+            {
+                note_names = new File(parent, "names.txt");
+            }
 
             if (title.getText().toString().equals(""))
             {
@@ -165,6 +161,18 @@ public class MenuOfNotes extends AppCompatActivity
                 startActivity(intent);
             }
         });
+    }
+
+    public File checkTxtFileNames(File[] parent_files)
+    {
+        for (int i = 0; i < parent_files.length; i++)
+        {
+            if (parent_files[i].getName() == "names.txt")
+            {
+                return parent_files[i];
+            }
+        }
+        return null;
     }
 
     public void openDeletionScreen(View view)
