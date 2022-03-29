@@ -20,15 +20,29 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class MenuOfNotes extends AppCompatActivity
 {
-    private final List<NoteEditor> noteList = new ArrayList<>();
-    private final List<String> notes = new ArrayList<>();
+    public static final List<NoteEditor> noteList = new ArrayList<>();
+    public static final List<String> notes = new ArrayList<>();
+
+    int counter = 0;
+    List<String> names_list;
+
+    InputStream inputStreamcounter;
+    BufferedReader bufferedReadercounter;
+
+    InputStream inputStream;
+    BufferedReader bufferedReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,17 +52,57 @@ public class MenuOfNotes extends AppCompatActivity
 
         ListView listview = (ListView) findViewById(R.id.listView);
 
-        Context context = getApplicationContext();
-        File parent = context.getFilesDir();
-        File[] files = parent.listFiles();
+//        Context context = getApplicationContext();
+//        File parent = context.getFilesDir();
+//        File[] files = parent.listFiles();
+//
+//        File note_names = checkTxtFileNames(files);
+//        // If note_names has not been updated, create a new txt file to store the names
+//        if (note_names == null)
+//        {
+//            note_names = new File(parent, "names.txt");
+//        }
 
-        File note_names = checkTxtFileNames(files);
-        // If note_names has not been updated, create a new txt file to store the names
-        if (note_names == null)
+
+
+
+        StringBuilder s = new StringBuilder();
+
+
+
+       // FileInputStream reader;
+        try
         {
-            note_names = new File(parent, "names.txt");
+//            reader = new FileInputStream(note_names);
+//            Scanner sc = new Scanner(reader);
+//
+//            while (sc.hasNext())
+//            {
+//                names_list.add(sc.nextLine());
+//            }
+
+
+            FileInputStream fi =openFileInput("names.txt");
+            InputStreamReader InputRead = new InputStreamReader(fi);
+            char[] inputBuffer = new char[100];
+            int charRead = 0;
+
+            while ((charRead=InputRead.read(inputBuffer))>0) {
+                // char to string conversion
+                String readstring = String.copyValueOf(inputBuffer,0,charRead);
+                s.append(readstring).append(", ");
+            }
+            InputRead.close();
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
 
+        String[] list = s.toString().split(", ");
+        names_list = new ArrayList<>(Arrays.asList(list));
+/*
         int length = (int) note_names.length();
 
 //        byte[] bytes = new byte[length];
@@ -72,7 +126,7 @@ public class MenuOfNotes extends AppCompatActivity
         {
             e.printStackTrace();
         }
-        ;
+        ;*/
 
 //        FileInputStream reader;
 //        try {
@@ -87,37 +141,9 @@ public class MenuOfNotes extends AppCompatActivity
 
 //        String names = new String(bytes);
 
-        notes.addAll(Arrays.asList(names_list));
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, notes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
 
         listview.setAdapter(arrayAdapter);
-
-        listview.setOnItemClickListener((adapter, view, location, id) -> {
-            for (NoteEditor n : noteList)
-            {
-                if (n.getName().equals(notes.get(location)))
-                {
-                    View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
-                    TextView noteName = (TextView) editor.findViewById(R.id.Notename);
-                    TextView notes = (TextView) editor.findViewById(R.id.Notetext);
-
-                    noteName.setText(n.getName());
-
-                    StringBuilder note = new StringBuilder();
-                    for (String s : n.getText())
-                    {
-                        note.append(s).append(" ");
-                    }
-
-                    notes.setText(note);
-
-                    Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
-                    startActivity(intent);
-                    break;
-                }
-            }
-        });
     }
 
     public void openTitleScreen(View view)
@@ -134,6 +160,9 @@ public class MenuOfNotes extends AppCompatActivity
         EditText title = (EditText) popup.findViewById(R.id.enterTitle);
         Button confirm = (Button) popup.findViewById(R.id.confirm3);
         TextView errorMessage = (TextView) popup.findViewById(R.id.titleErrorMessage);
+
+      //  View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
+        //TextView noteName = (TextView) editor.findViewById(R.id.noteName);
 
         dialogBuilder.setView(popup);
         AlertDialog dialog = dialogBuilder.create();
@@ -155,28 +184,33 @@ public class MenuOfNotes extends AppCompatActivity
             }
             else
             {
-                // Create a new file txt file for the new note
-                File newNote = new File(parent, title.getText().toString() + ".txt" );
-
                 // Create new instance of the note editor
                 NoteEditor note = new NoteEditor(title.getText().toString());
-                View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
-                TextView noteName = (TextView) editor.findViewById(R.id.Notename);
-                noteName.setText(title.getText().toString());
+
+              //  noteName.setText(title.getText().toString());
 
                 // Add the instance into an arraylist
                 noteList.add(note);
+                notes.add(title.getText().toString());
 
                 // Write the name of the file into names.txt
-                String s = title.getText().toString() + ", ";
+                String s = title.getText().toString();
+
                 FileOutputStream stream;
                 try
                 {
                     stream = new FileOutputStream(note_names);
-                    stream.write(s.getBytes());
-                    stream.close();
+                    PrintWriter p = new PrintWriter(stream);
+                    p.println(s);
+                    p.close();
+
+//                    FileOutputStream fo = openFileOutput("names.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fo);
+//                    outputWriter.write(s);
+//                    outputWriter.close();
                 }
-                catch (IOException e) {
+                catch (IOException e)
+                {
                     e.printStackTrace();
                 }
 

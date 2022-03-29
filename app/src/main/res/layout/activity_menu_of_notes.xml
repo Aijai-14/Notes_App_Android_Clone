@@ -14,7 +14,9 @@
         android:layout_below="@+id/editTextSearch"
         android:divider="#ad5"
         android:dividerHeight="2dp"
-        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/andika"
         app:layout_constraintBottom_toTopOf="@id/addNoteButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -79,7 +81,6 @@
         android:textColor="@color/black"
         android:textStyle="italic"
         android:fontFamily="@font/andika"
-
         android:id="@+id/enterSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
