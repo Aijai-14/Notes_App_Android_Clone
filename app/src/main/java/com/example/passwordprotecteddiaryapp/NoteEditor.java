@@ -25,6 +25,7 @@ public class NoteEditor extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
         File parent = getApplicationContext().getFilesDir();
+        TextView n = (TextView) findViewById(R.id.noteName);
 
         File[] notes = parent.listFiles();
         File thisNote = null;
@@ -37,11 +38,19 @@ public class NoteEditor extends AppCompatActivity
             if (note.toString().equals(noteName))
             {
                 thisNote = note;
+                String s = "Note "+noteNum;
+                n.setText(s);
                 break;
             }
         }
 
         assert thisNote != null;
+
+        TextView noteText = (TextView) findViewById(R.id.noteText);
+
+
+
+
 
     }
 
