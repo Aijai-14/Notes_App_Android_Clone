@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.contextaware.OnContextAvailableListener;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -37,22 +39,19 @@ public class NoteEditor extends AppCompatActivity
             if (note.toString().equals(noteName))
             {
                 thisNote = note;
-                String s = "Note "+noteNum;
-                n.setText(s);
                 break;
             }
         }
 
-
-        TextView noteText = (TextView) findViewById(R.id.noteText);
-
-
-
-
-
+        int num = MenuOfNotes.count+1;
+        addOnContextAvailableListener(new OnContextAvailableListener() {
+            @Override
+            public void onContextAvailable(@NonNull Context context) {
+                String s = "Note " + num;
+                n.setText(s);
+            }
+        });
     }
-
-
 
     public NoteEditor(String name)
     {
@@ -61,7 +60,7 @@ public class NoteEditor extends AppCompatActivity
 
     public NoteEditor()
     {
-        this.name = "New Note";
+        this.name = "";
     }
 
     public String getName()
