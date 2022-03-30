@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,12 +41,15 @@ public class MenuOfNotes extends AppCompatActivity
         listview.setAdapter(arrayAdapter);
         TextView noteName = (TextView) findViewById(R.id.noteName);
 
+
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
                 Object note = listview.getItemAtPosition(i);
 
-                File file = checkFileExists(parent.listFiles(), note.toString());
+                File file = checkFileExists(parent.listFiles(), note.toString()+".txt");
 
                 if (file == null)
                 {
