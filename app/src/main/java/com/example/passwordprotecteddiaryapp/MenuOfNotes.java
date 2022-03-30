@@ -35,7 +35,7 @@ public class MenuOfNotes extends AppCompatActivity
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
-    File note_names = new File(getApplicationContext().getFilesDir().getParent(), "NoteNames.txt");
+    File note_names = new File("/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/assets/NoteNames.txt");
 
     int counter = 0;
     List<String> names_list = new ArrayList<>();
