@@ -41,7 +41,6 @@ public class MenuOfNotes extends AppCompatActivity
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
 
         listview.setAdapter(arrayAdapter);
-        TextView noteName = (TextView) findViewById(R.id.noteName);
 
         listview.setOnItemClickListener((adapterView, view, i, l) -> {
             count = i;
@@ -53,8 +52,6 @@ public class MenuOfNotes extends AppCompatActivity
             {
                 file = new File(parent, note.toString()+".txt");
             }
-
-            noteName.setText(note.toString());
 
             Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
             startActivity(intent);
