@@ -53,8 +53,9 @@ public class MenuOfNotes extends AppCompatActivity
 
                 if (file == null)
                 {
-                    File f = new File(parent, note.toString()+".txt");
+                    file = new File(parent, note.toString()+".txt");
                 }
+
 
                 noteName.setText(note.toString());
 
