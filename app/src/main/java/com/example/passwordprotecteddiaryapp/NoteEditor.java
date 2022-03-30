@@ -65,6 +65,7 @@ public class NoteEditor extends AppCompatActivity
         File[] notes = parent.listFiles();
         File thisNote = null;
         String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
+        TextView text = (TextView) findViewById(R.id.noteText);
 
         // Look for the note with noteName
         for (File note: notes)
@@ -80,12 +81,11 @@ public class NoteEditor extends AppCompatActivity
         try
         {
             stream = new FileOutputStream(thisNote);
-            stream.write(thisNote.getText().toString().getBytes());
+            stream.write(text.getText().toString().getBytes());
             stream.close();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
