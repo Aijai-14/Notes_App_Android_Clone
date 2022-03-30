@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,6 +52,7 @@ public class MenuOfNotes extends AppCompatActivity
             if (file == null)
             {
                 file = new File(parent, note.toString()+".txt");
+                Toast.makeText(MenuOfNotes.this, "made ", Toast.LENGTH_LONG).show();
             }
 
             Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
