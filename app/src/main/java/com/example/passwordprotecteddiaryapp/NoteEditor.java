@@ -76,5 +76,16 @@ public class NoteEditor extends AppCompatActivity
             }
         }
 
+        FileOutputStream stream;
+        try
+        {
+            stream = new FileOutputStream(thisNote);
+            stream.write(thisNote.getText().toString().getBytes());
+            stream.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
