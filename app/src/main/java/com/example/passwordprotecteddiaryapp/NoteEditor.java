@@ -26,7 +26,6 @@ public class NoteEditor extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
-        File parent = getApplicationContext().getFilesDir();
         TextView n = (TextView) findViewById(R.id.noteName);
 
         int num = MenuOfNotes.count+1;
@@ -62,6 +61,7 @@ public class NoteEditor extends AppCompatActivity
 
     public void saveText(View view)
     {
+        File parent = getApplicationContext().getFilesDir();
         File[] notes = parent.listFiles();
         File thisNote = null;
         String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
