@@ -35,7 +35,7 @@ public class MenuOfNotes extends AppCompatActivity
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
-    File note_names = new File(getApplicationContext().getFilesDir().getParent(), "NoteNames");
+    File note_names = new File(getApplicationContext().getFilesDir().getParent(), "NoteNames.txt");
 
     int counter = 0;
     List<String> names_list = new ArrayList<>();
@@ -60,7 +60,7 @@ public class MenuOfNotes extends AppCompatActivity
 //        }
 
        FileInputStream reader;
-        try
+       try
        {
             reader = new FileInputStream(note_names);
             Scanner sc = new Scanner(reader);
