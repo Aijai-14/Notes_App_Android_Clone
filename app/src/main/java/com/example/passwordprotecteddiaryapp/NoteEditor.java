@@ -31,7 +31,7 @@ public class NoteEditor extends AppCompatActivity
 
         File[] notes = parent.listFiles();
         File thisNote = null;
-        String noteName = "Note " + MenuOfNotes.count + ".txt";
+        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
 
         // Look for the note with noteName
         for (File note: notes)
