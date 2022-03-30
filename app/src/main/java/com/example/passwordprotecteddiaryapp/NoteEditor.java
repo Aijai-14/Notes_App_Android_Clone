@@ -28,8 +28,7 @@ public class NoteEditor extends AppCompatActivity
 
         File[] notes = parent.listFiles();
         File thisNote = null;
-        int noteNum = MenuOfNotes.count;
-        String noteName = "Note " + noteNum + ".txt";
+        String noteName = "Note " + MenuOfNotes.count + ".txt";
 
         // Look for the note with noteName
         for (File note: notes)
@@ -42,8 +41,9 @@ public class NoteEditor extends AppCompatActivity
         }
 
         assert thisNote != null;
-
     }
+
+
 
     public NoteEditor(String name)
     {
