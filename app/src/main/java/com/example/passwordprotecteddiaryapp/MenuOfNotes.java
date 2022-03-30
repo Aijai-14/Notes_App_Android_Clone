@@ -59,16 +59,17 @@ public class MenuOfNotes extends AppCompatActivity
 //            note_names = new File(parent, "names.txt");
 //        }
 
-       FileInputStream reader;
+        FileInputStream reader;
         try
-       {
+        {
             reader = new FileInputStream(note_names);
             Scanner sc = new Scanner(reader);
 
-           while (sc.hasNext())
-          {
+            // Set scanner to the next empty line
+            while (sc.hasNext())
+            {
                 names_list.add(sc.nextLine());
-          }
+            }
 
         }
         catch (IOException e)
@@ -158,7 +159,7 @@ public class MenuOfNotes extends AppCompatActivity
                 // Create new instance of the note editor
                 NoteEditor note = new NoteEditor(title.getText().toString());
 
-              //  noteName.setText(title.getText().toString());
+                //  noteName.setText(title.getText().toString());
 
                 // Add the instance into an arraylist
                 noteList.add(note);
