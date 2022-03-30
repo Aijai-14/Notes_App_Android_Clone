@@ -1,7 +1,6 @@
 package com.example.passwordprotecteddiaryapp;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,29 +13,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class MenuOfNotes extends AppCompatActivity
 {
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
-    int counter = 0;
-    List<String> names_list = new ArrayList<>();
+    ArrayList<String> names_list = new ArrayList<>(Arrays.asList("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6", "Note 7", "Note 8", "Note 9", "Note 10"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +30,6 @@ public class MenuOfNotes extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
         ListView listview = (ListView) findViewById(R.id.listView);
-
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
 
@@ -88,21 +73,6 @@ public class MenuOfNotes extends AppCompatActivity
                 notes.add(title.getText().toString());
 
                 // Write the name of the file into names.txt
-                String s = title.getText().toString();
-
-                FileOutputStream stream;
-                try
-                {
-                    stream = new FileOutputStream();
-                    PrintWriter p = new PrintWriter(stream);
-                    p.println(s);
-                    p.close();
-                }
-
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
 
                 Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
                 startActivity(intent);
