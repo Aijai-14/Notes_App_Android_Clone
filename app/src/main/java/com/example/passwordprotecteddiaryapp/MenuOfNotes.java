@@ -23,6 +23,7 @@ public class MenuOfNotes extends AppCompatActivity
 {
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
+    public static int count = -1;
 
     public static ArrayList<String> names_list = new ArrayList<>(Arrays.asList("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6", "Note 7", "Note 8", "Note 9", "Note 10"));
     public static ArrayList<NoteEditor> notes_objects = new ArrayList<>(Arrays.asList(new NoteEditor("Note 1"), new NoteEditor("Note 2"), new NoteEditor("Note 3"), new NoteEditor("Note 4"), new NoteEditor("Note 5"), new NoteEditor("Note 6"), new NoteEditor("Note 7"), new NoteEditor("Note 8"), new NoteEditor("Note 9"), new NoteEditor("Note 10")));
@@ -42,6 +43,7 @@ public class MenuOfNotes extends AppCompatActivity
         TextView noteName = (TextView) findViewById(R.id.noteName);
 
         listview.setOnItemClickListener((adapterView, view, i, l) -> {
+            count = i;
             Object note = listview.getItemAtPosition(i);
 
             File file = checkFileExists(parent.listFiles(), note.toString()+".txt");

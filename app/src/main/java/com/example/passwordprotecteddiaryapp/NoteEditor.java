@@ -24,6 +24,25 @@ public class NoteEditor extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
+        File parent = getApplicationContext().getFilesDir();
+
+        File[] notes = parent.listFiles();
+        File thisNote = null;
+        int noteNum = MenuOfNotes.count;
+        String noteName = "Note " + noteNum + ".txt";
+
+        // Look for the note with noteName
+        for (File note: notes)
+        {
+            if (note.toString().equals(noteName))
+            {
+                thisNote = note;
+                break;
+            }
+        }
+
+        assert thisNote != null;
+
     }
 
     public NoteEditor(String name)
