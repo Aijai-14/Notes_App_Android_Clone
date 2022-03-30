@@ -40,7 +40,7 @@ public class NoteEditor extends AppCompatActivity
             }
         }
 
-        assert thisNote != null;
+
     }
 
 
