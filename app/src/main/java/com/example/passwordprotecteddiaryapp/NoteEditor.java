@@ -24,20 +24,6 @@ public class NoteEditor extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
-
-        TextView noteName = (TextView) findViewById(R.id.noteName);
-
-        for (NoteEditor ne : MenuOfNotes.noteList)
-        {
-            for (String s : MenuOfNotes.notes)
-            {
-                if (s.equals(ne.getName()))
-                {
-                    noteName.setText(s);
-                    break;
-                }
-            }
-        }
     }
 
     public NoteEditor(String name)

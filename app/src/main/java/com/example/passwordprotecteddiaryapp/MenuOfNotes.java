@@ -1,6 +1,7 @@
 package com.example.passwordprotecteddiaryapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,9 @@ public class MenuOfNotes extends AppCompatActivity
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
-    ArrayList<String> names_list = new ArrayList<>(Arrays.asList("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6", "Note 7", "Note 8", "Note 9", "Note 10"));
+    public static ArrayList<String> names_list = new ArrayList<>(Arrays.asList("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6", "Note 7", "Note 8", "Note 9", "Note 10"));
+    Context context = getApplicationContext();
+    File parent = context.getFilesDir();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,11 +38,24 @@ public class MenuOfNotes extends AppCompatActivity
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
 
         listview.setAdapter(arrayAdapter);
+        TextView noteName = (TextView) findViewById(R.id.noteName);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object note = listview.getItemAtPosition(i);
 
+                File file = checkFileExists(parent.listFiles(), note.toString());
+
+                if (file == null)
+                {
+                    File f = new File(parent, note.toString()+".txt");
+                }
+
+                noteName.setText(note.toString());
+
+                Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
+                startActivity(intent);
             }
         });
     }
@@ -90,11 +106,10 @@ public class MenuOfNotes extends AppCompatActivity
 
     public File checkFileExists(File[] parent_files, String fileName)
     {
-        for (int i = 0; i < parent_files.length; i++)
-        {
-            if (parent_files[i].getName() == fileName);
+        for (File parent_file : parent_files) {
+            if (parent_file.getName().equals(fileName))
             {
-                return parent_files[i];
+                return parent_file;
             }
         }
         return null;
