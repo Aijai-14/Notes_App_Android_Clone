@@ -35,8 +35,6 @@ public class MenuOfNotes extends AppCompatActivity
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
-    File note_names = new File("/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/assets/NoteNames.txt");
-
     int counter = 0;
     List<String> names_list = new ArrayList<>();
 
@@ -45,75 +43,8 @@ public class MenuOfNotes extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
-
         ListView listview = (ListView) findViewById(R.id.listView);
 
-//        Context context = getApplicationContext();
-//        File parent = context.getFilesDir();
-//        File[] files = parent.listFiles();
-//
-//        File note_names = checkTxtFileNames(files);
-//        // If note_names has not been updated, create a new txt file to store the names
-//        if (note_names == null)
-//        {
-//            note_names = new File(parent, "names.txt");
-//        }
-
-       FileInputStream reader;
-       try
-       {
-            reader = new FileInputStream(note_names);
-            Scanner sc = new Scanner(reader);
-
-           while (sc.hasNext())
-          {
-                names_list.add(sc.nextLine());
-          }
-
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-/*
-        int length = (int) note_names.length();
-
-//        byte[] bytes = new byte[length];
-
-        // Read the contents within note_names
-        FileReader fileReader = null;
-        try
-        {
-            fileReader = new FileReader(note_names.getAbsolutePath());
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        BufferedReader bufferReader = new BufferedReader(fileReader);
-        String[] names_list = new String[0];
-        try
-        {
-            names_list = bufferReader.readLine().split(", ");
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        ;*/
-
-//        FileInputStream reader;
-//        try {
-//            reader = new FileInputStream(note_names);
-//            reader.read(bytes);
-//            reader.close();
-//        }
-//        catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-
-//        String names = new String(bytes);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
 
@@ -140,14 +71,6 @@ public class MenuOfNotes extends AppCompatActivity
         dialog.show();
 
         confirm.setOnClickListener(view -> {
-//            Context context = getApplicationContext();
-//            File parent =  context.getFilesDir();
-//
-//            File note_names = checkTxtFileNames(parent.listFiles());
-//            if (note_names == null)
-//            {
-//                note_names = new File(parent, "names.txt");
-//            }
 
             if (title.getText().toString().equals(""))
             {
@@ -158,7 +81,7 @@ public class MenuOfNotes extends AppCompatActivity
                 // Create new instance of the note editor
                 NoteEditor note = new NoteEditor(title.getText().toString());
 
-              //  noteName.setText(title.getText().toString());
+                //  noteName.setText(title.getText().toString());
 
                 // Add the instance into an arraylist
                 noteList.add(note);
@@ -170,7 +93,7 @@ public class MenuOfNotes extends AppCompatActivity
                 FileOutputStream stream;
                 try
                 {
-                    stream = new FileOutputStream(note_names);
+                    stream = new FileOutputStream();
                     PrintWriter p = new PrintWriter(stream);
                     p.println(s);
                     p.close();
@@ -187,11 +110,11 @@ public class MenuOfNotes extends AppCompatActivity
         });
     }
 
-    public File checkTxtFileNames(File[] parent_files)
+    public File checkFileExists(File[] parent_files, String fileName)
     {
         for (int i = 0; i < parent_files.length; i++)
         {
-            if (parent_files[i].getName() == "names.txt")
+            if (parent_files[i].getName() == fileName);
             {
                 return parent_files[i];
             }
