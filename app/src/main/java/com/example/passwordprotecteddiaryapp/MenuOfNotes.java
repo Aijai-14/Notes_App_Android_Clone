@@ -35,14 +35,10 @@ public class MenuOfNotes extends AppCompatActivity
     public static final List<NoteEditor> noteList = new ArrayList<>();
     public static final List<String> notes = new ArrayList<>();
 
+    File note_names = new File(getApplicationContext().getFilesDir().getParent(), "NoteNames");
+
     int counter = 0;
-    List<String> names_list;
-
-    InputStream inputStreamcounter;
-    BufferedReader bufferedReadercounter;
-
-    InputStream inputStream;
-    BufferedReader bufferedReader;
+    List<String> names_list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,36 +59,16 @@ public class MenuOfNotes extends AppCompatActivity
 //            note_names = new File(parent, "names.txt");
 //        }
 
-
-
-
-        StringBuilder s = new StringBuilder();
-
-
-
-       // FileInputStream reader;
+       FileInputStream reader;
         try
-        {
-//            reader = new FileInputStream(note_names);
-//            Scanner sc = new Scanner(reader);
-//
-//            while (sc.hasNext())
-//            {
-//                names_list.add(sc.nextLine());
-//            }
+       {
+            reader = new FileInputStream(note_names);
+            Scanner sc = new Scanner(reader);
 
-
-            FileInputStream fi =openFileInput("names.txt");
-            InputStreamReader InputRead = new InputStreamReader(fi);
-            char[] inputBuffer = new char[100];
-            int charRead = 0;
-
-            while ((charRead=InputRead.read(inputBuffer))>0) {
-                // char to string conversion
-                String readstring = String.copyValueOf(inputBuffer,0,charRead);
-                s.append(readstring).append(", ");
-            }
-            InputRead.close();
+           while (sc.hasNext())
+          {
+                names_list.add(sc.nextLine());
+          }
 
         }
         catch (IOException e)
@@ -100,8 +76,6 @@ public class MenuOfNotes extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String[] list = s.toString().split(", ");
-        names_list = new ArrayList<>(Arrays.asList(list));
 /*
         int length = (int) note_names.length();
 
@@ -141,7 +115,7 @@ public class MenuOfNotes extends AppCompatActivity
 
 //        String names = new String(bytes);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
 
         listview.setAdapter(arrayAdapter);
     }
@@ -161,22 +135,19 @@ public class MenuOfNotes extends AppCompatActivity
         Button confirm = (Button) popup.findViewById(R.id.confirm3);
         TextView errorMessage = (TextView) popup.findViewById(R.id.titleErrorMessage);
 
-      //  View editor = getLayoutInflater().inflate(R.layout.blank_note_editer, null);
-        //TextView noteName = (TextView) editor.findViewById(R.id.noteName);
-
         dialogBuilder.setView(popup);
         AlertDialog dialog = dialogBuilder.create();
         dialog.show();
 
         confirm.setOnClickListener(view -> {
-            Context context = getApplicationContext();
-            File parent =  context.getFilesDir();
-
-            File note_names = checkTxtFileNames(parent.listFiles());
-            if (note_names == null)
-            {
-                note_names = new File(parent, "names.txt");
-            }
+//            Context context = getApplicationContext();
+//            File parent =  context.getFilesDir();
+//
+//            File note_names = checkTxtFileNames(parent.listFiles());
+//            if (note_names == null)
+//            {
+//                note_names = new File(parent, "names.txt");
+//            }
 
             if (title.getText().toString().equals(""))
             {
@@ -203,12 +174,8 @@ public class MenuOfNotes extends AppCompatActivity
                     PrintWriter p = new PrintWriter(stream);
                     p.println(s);
                     p.close();
-
-//                    FileOutputStream fo = openFileOutput("names.txt", MODE_PRIVATE);
-//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fo);
-//                    outputWriter.write(s);
-//                    outputWriter.close();
                 }
+
                 catch (IOException e)
                 {
                     e.printStackTrace();
