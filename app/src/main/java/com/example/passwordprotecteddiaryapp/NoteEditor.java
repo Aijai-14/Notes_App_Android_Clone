@@ -29,20 +29,6 @@ public class NoteEditor extends AppCompatActivity
         File parent = getApplicationContext().getFilesDir();
         TextView n = (TextView) findViewById(R.id.noteName);
 
-        File[] notes = parent.listFiles();
-        File thisNote = null;
-        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
-
-        // Look for the note with noteName
-        for (File note: notes)
-        {
-            if (note.toString().equals(noteName))
-            {
-                thisNote = note;
-                break;
-            }
-        }
-
         int num = MenuOfNotes.count+1;
         addOnContextAvailableListener(new OnContextAvailableListener() {
             @Override
@@ -76,29 +62,19 @@ public class NoteEditor extends AppCompatActivity
 
     public void saveText(View view)
     {
-        TextView noteName = (TextView) findViewById(R.id.noteName);
-        TextView noteText = (TextView) findViewById(R.id.noteText);
+        File[] notes = parent.listFiles();
+        File thisNote = null;
+        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
 
-        Context context = getApplicationContext();
-        File parent =  context.getFilesDir();
-        File note_names = new File(parent, noteName.getText().toString()+".txt");
-
-        String[] words = noteText.getText().toString().split(" ");
-
-        FileOutputStream stream;
-        try
+        // Look for the note with noteName
+        for (File note: notes)
         {
-            stream = new FileOutputStream(note_names);
-            for (String s : words)
+            if (note.toString().equals(noteName))
             {
-                String string = s + " ";
-                stream.write(string.getBytes());
+                thisNote = note;
+                break;
             }
-            stream.close();
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+
     }
 }
