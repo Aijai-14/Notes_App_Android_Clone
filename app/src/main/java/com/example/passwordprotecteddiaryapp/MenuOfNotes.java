@@ -90,25 +90,12 @@ public class MenuOfNotes extends AppCompatActivity
                 // Write the name of the file into names.txt
                 String s = title.getText().toString();
 
-                FileOutputStream stream;
-                try
-                {
-                    stream = new FileOutputStream();
-                    PrintWriter p = new PrintWriter(stream);
-                    p.println(s);
-                    p.close();
-                }
-
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-
                 Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
                 startActivity(intent);
             }
         });
     }
+
 
     public File checkFileExists(File[] parent_files, String fileName)
     {
