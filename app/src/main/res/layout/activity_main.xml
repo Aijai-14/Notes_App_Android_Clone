@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toStartOf="@+id/enter_password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.431"
-        app:srcCompat="@drawable/picture1" />
+        app:srcCompat="@drawable/picture1"
+        android:contentDescription="@string/diary_rings" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -30,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97"
-        app:srcCompat="@drawable/picture1" />
+        app:srcCompat="@drawable/picture1"
+        android:contentDescription="@string/diary_rings"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -42,7 +44,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.703"
-        app:srcCompat="@drawable/picture1" />
+        app:srcCompat="@drawable/picture1"
+        android:contentDescription="@string/diary_rings"/>
 
     <TextView
         android:id="@+id/welcome_text"
@@ -64,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="440dp"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/green2"
         android:fontFamily="@font/andika"
         android:text="@string/changeSet_password"
         android:onClick="createChangePasswordDialog"
@@ -103,7 +106,8 @@
         app:layout_constraintEnd_toStartOf="@+id/welcome_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.205"
-        app:srcCompat="@drawable/picture1" />
+        app:srcCompat="@drawable/picture1"
+        android:contentDescription="@string/diary_rings" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -115,7 +119,8 @@
         app:layout_constraintEnd_toStartOf="@+id/welcome_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/picture1" />
+        app:srcCompat="@drawable/picture1"
+        android:contentDescription="@string/diary_rings"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

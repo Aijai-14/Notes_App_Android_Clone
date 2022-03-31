@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,9 +34,9 @@ public class MainActivity extends AppCompatActivity
         dialogBuilder = new AlertDialog.Builder(this);
         final View popup = getLayoutInflater().inflate(R.layout.change_password_prompt, null);
 
-        EditText password = (EditText) popup.findViewById(R.id.editTextTextPassword2);
-        Button confirm = (Button) popup.findViewById(R.id.confirm2);
-        TextView message = (TextView) popup.findViewById(R.id.password_message);
+        EditText password = popup.findViewById(R.id.editTextTextPassword2);
+        Button confirm = popup.findViewById(R.id.confirm2);
+        TextView message = popup.findViewById(R.id.password_message);
 
         dialogBuilder.setView(popup);
         dialog = dialogBuilder.create();
@@ -59,12 +60,14 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
 
-                message.setText("Successful Password Change");
+                message.setText(R.string.successful_change);
+                Toast.makeText(MainActivity.this, "Successful Password Change", Toast.LENGTH_SHORT).show();
             }
 
             else
             {
-                message.setText("Please Enter a Password");
+                message.setText(R.string.enter_new_pass);
+                Toast.makeText(MainActivity.this, "Please Enter a Password", Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -75,9 +78,9 @@ public class MainActivity extends AppCompatActivity
         dialogBuilder = new AlertDialog.Builder(this);
         final View popup = getLayoutInflater().inflate(R.layout.enter_password_prompt, null);
 
-        EditText password = (EditText) popup.findViewById(R.id.editTextTextPassword);
-        Button confirm = (Button) popup.findViewById(R.id.confirm);
-        TextView message = (TextView) popup.findViewById(R.id.passwordErrorMessage);
+        EditText password = popup.findViewById(R.id.editTextTextPassword);
+        Button confirm = popup.findViewById(R.id.confirm);
+        TextView message = popup.findViewById(R.id.passwordErrorMessage);
 
         dialogBuilder.setView(popup);
         dialog = dialogBuilder.create();
@@ -111,13 +114,15 @@ public class MainActivity extends AppCompatActivity
 
                 if (password.getText().toString().equals(current_password))
                 {
+                    Toast.makeText(MainActivity.this, "Welcome :D", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MenuOfNotes.class);
                     startActivity(intent);
                 }
 
                 else
                 {
-                    message.setText("Incorrect Password: Please Try Again");
+                    message.setText(R.string.incorrect_password);
+                    Toast.makeText(MainActivity.this, "Incorrect Password: Please Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
         }

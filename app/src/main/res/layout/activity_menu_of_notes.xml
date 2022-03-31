@@ -12,80 +12,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextSearch"
-        android:divider="#ad5"
+        android:divider="#1FB3F6"
+        android:scrollbars="vertical"
         android:dividerHeight="2dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
+        android:backgroundTint="@color/gray"
         android:fontFamily="@font/andika"
-        app:layout_constraintBottom_toTopOf="@id/addNoteButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        app:layout_constraintTop_toBottomOf="@+id/backButton"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="80dp"
-        android:background="@color/white"
         android:layout_height="64dp"
         android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:contentDescription="@string/return_to_diary_cover"
         android:onClick="openTitleScreen"
         android:padding="2dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/return_to_diary_cover"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
-
-    <ImageView
-        android:id="@+id/addNoteButton"
-        android:layout_width="165dp"
-        android:onClick="createAddNoteDialog"
-        android:layout_height="64dp"
-        android:background="@color/black"
-        android:contentDescription="@string/add_note2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:ignore="ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/deleteNoteButton"
-        android:layout_width="166dp"
-        android:layout_height="64dp"
-        android:onClick="openDeletionScreen"
-        android:background="@color/black"
-        android:contentDescription="@string/delete_notes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addNoteButton"
-        app:srcCompat="@android:drawable/ic_delete"
-        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/editTextSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints="Enter the note you would like to search"
         android:ems="10"
+        android:hint="@string/menu_search"
         android:inputType="textPersonName"
         android:text="@string/menu_search"
-        android:textColor="@color/black"
-        android:autofillHints="Enter the note you would like to search"
+        android:textColor="#B3E5FC"
         app:layout_constraintEnd_toStartOf="@+id/enterSearch"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:backgroundTint="@color/green"
-        android:textColor="@color/black"
-        android:textStyle="italic"
-        android:fontFamily="@font/andika"
         android:id="@+id/enterSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="64dp"
+        android:backgroundTint="@color/green2"
+        android:fontFamily="@font/andika"
         android:text="@string/menu_enter_button"
+        android:textColor="#6D4C41"
+        android:textSize="13.5sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,4 +18,8 @@
     <string name="menu_enter_button">Enter</string>
     <string name="enter_text">Enter Text</string>
     <string name="save">SAVE</string>
+    <string name="incorrect_password">Incorrect Password: Please Try Again</string>
+    <string name="enter_new_pass">Please Enter a Password</string>
+    <string name="successful_change">Successful Password Change</string>
+    <string name="diary_rings">Diary Rings</string>
 </resources>
