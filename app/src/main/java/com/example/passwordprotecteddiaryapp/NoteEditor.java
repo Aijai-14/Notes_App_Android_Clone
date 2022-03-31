@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.contextaware.OnContextAvailableListener;
 import androidx.annotation.NonNull;
@@ -34,28 +35,53 @@ public class NoteEditor extends AppCompatActivity
         int num = MenuOfNotes.count+1;
         String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
 
+        Context context = getApplicationContext();
+        File location =  context.getFilesDir();
+        File note_file = new File(location, noteName);
+
         addOnContextAvailableListener(new OnContextAvailableListener() {
             @Override
             public void onContextAvailable(@NonNull Context context) {
                 String b = "";
 
-                try {
-                    byte[] bytes = new byte[1024];
+                int length = (int) note_file.length();
 
-                    FileInputStream fis = openFileInput(noteName);
+                byte[] bytes = new byte[length];
 
-                    fis.read(bytes);
-                    fis.close();
-
-                    b = new String(bytes);
-
-                } catch (IOException e) {
+                FileInputStream reader;
+                try
+                {
+                    reader = new FileInputStream(note_file);
+                    reader.read(bytes);
+                    reader.close();
+                }
+                catch (IOException e)
+                {
                     e.printStackTrace();
                 }
 
+                String current_note = new String(bytes);
+
+//                try
+//                {
+//                    byte[] bytes = new byte[1024];
+//
+//                    FileInputStream fis = openFileInput(noteName);
+//
+//                    fis.read(bytes);
+//                    fis.close();
+//
+//                    b = new String(bytes);
+//
+//                }
+//                catch (IOException e)
+//                {
+//                    e.printStackTrace();
+//                }
+
                 String s = "Note " + num;
                 n.setText(s);
-                text.setText(b);
+                text.setText(current_note);
             }
         });
     }
@@ -81,31 +107,44 @@ public class NoteEditor extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void saveText(View view) throws FileNotFoundException {
-//        File parent = getApplicationContext().getExternalFilesDir(null);
-//        File[] notes = parent.listFiles();
-//        File thisNote = null;
-          String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
-          TextView text = (TextView) findViewById(R.id.noteText);
-//
-//        // Look for the note with noteName
-//        for (File note: notes)
-//        {
-//            if (note.toString().equals(noteName))
-//            {
-//                thisNote = note;
-//                break;
-//            }
-//        }
+    public void saveText(View view) {
+        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
+        TextView text = (TextView) findViewById(R.id.noteText);
 
-        FileOutputStream stream = openFileOutput(noteName, MODE_PRIVATE);
+        Context context = getApplicationContext();
+        File location =  context.getFilesDir();
+        File password_file = new File(location, noteName);
+
+        FileOutputStream stream;
         try
         {
+            stream = new FileOutputStream(password_file);
             stream.write(text.getText().toString().getBytes());
             stream.close();
+            Toast.makeText(NoteEditor.this, text.getText().toString(), Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+//
+//        FileOutputStream stream = openFileOutput(noteName, MODE_PRIVATE);
+//
+//        try
+//        {
+//            new FileOutputStream(getFilesDir().getAbsolutePath()).close();
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try
+//        {
+//            stream.write(text.getText().toString().getBytes());
+//            stream.close();
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 }

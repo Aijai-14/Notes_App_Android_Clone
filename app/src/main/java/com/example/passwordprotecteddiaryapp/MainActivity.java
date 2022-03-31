@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity
                 byte[] bytes = new byte[length];
 
                 FileInputStream reader;
-                try {
+                try
+                {
                     reader = new FileInputStream(password_file);
                     reader.read(bytes);
                     reader.close();
