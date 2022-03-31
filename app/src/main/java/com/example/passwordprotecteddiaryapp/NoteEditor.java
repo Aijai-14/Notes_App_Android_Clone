@@ -121,7 +121,7 @@ public class NoteEditor extends AppCompatActivity
             stream = new FileOutputStream(password_file);
             stream.write(text.getText().toString().getBytes());
             stream.close();
-            Toast.makeText(NoteEditor.this, text.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(NoteEditor.this, "Updated Note " + (MenuOfNotes.count + 1), Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) {
             e.printStackTrace();
