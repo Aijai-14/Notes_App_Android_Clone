@@ -47,13 +47,13 @@ public class MenuOfNotes extends AppCompatActivity
             count = i;
             Object note = listview.getItemAtPosition(i);
 
-            File file = checkFileExists(parent.listFiles(), note.toString()+".txt");
-
-            if (file == null)
-            {
-                file = new File(parent, note.toString()+".txt");
-                Toast.makeText(MenuOfNotes.this, "made ", Toast.LENGTH_LONG).show();
-            }
+//            File file = checkFileExists(parent.listFiles(), note.toString()+".txt");
+//
+//            if (file == null)
+//            {
+//                file = new File(parent, note.toString()+".txt");
+//                Toast.makeText(MenuOfNotes.this, "made ", Toast.LENGTH_LONG).show();
+//            }
 
             Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
             startActivity(intent);

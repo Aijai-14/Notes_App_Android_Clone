@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,13 +29,33 @@ public class NoteEditor extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
         TextView n = (TextView) findViewById(R.id.noteName);
+        TextView text = (TextView) findViewById(R.id.noteText);
 
         int num = MenuOfNotes.count+1;
+        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
+
         addOnContextAvailableListener(new OnContextAvailableListener() {
             @Override
             public void onContextAvailable(@NonNull Context context) {
+                String b = "";
+
+                try {
+                    byte[] bytes = new byte[1024];
+
+                    FileInputStream fis = openFileInput(noteName);
+
+                    fis.read(bytes);
+                    fis.close();
+
+                    b = new String(bytes);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 String s = "Note " + num;
                 n.setText(s);
+                text.setText(b);
             }
         });
     }
@@ -59,28 +81,26 @@ public class NoteEditor extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void saveText(View view)
-    {
-        File parent = getApplicationContext().getFilesDir();
-        File[] notes = parent.listFiles();
-        File thisNote = null;
-        String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
-        TextView text = (TextView) findViewById(R.id.noteText);
+    public void saveText(View view) throws FileNotFoundException {
+//        File parent = getApplicationContext().getExternalFilesDir(null);
+//        File[] notes = parent.listFiles();
+//        File thisNote = null;
+          String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
+          TextView text = (TextView) findViewById(R.id.noteText);
+//
+//        // Look for the note with noteName
+//        for (File note: notes)
+//        {
+//            if (note.toString().equals(noteName))
+//            {
+//                thisNote = note;
+//                break;
+//            }
+//        }
 
-        // Look for the note with noteName
-        for (File note: notes)
-        {
-            if (note.toString().equals(noteName))
-            {
-                thisNote = note;
-                break;
-            }
-        }
-
-        FileOutputStream stream;
+        FileOutputStream stream = openFileOutput(noteName, MODE_PRIVATE);
         try
         {
-            stream = new FileOutputStream(thisNote);
             stream.write(text.getText().toString().getBytes());
             stream.close();
         }
