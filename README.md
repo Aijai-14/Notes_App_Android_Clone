@@ -43,7 +43,7 @@ Our app will load up with a screen welcoming the user and directing them to pres
 __Functional Requirements for Project:__
 
 1. Users can set a password for their diary and change it at any time.  
-  - The first time the app is used, it will ask the user to set a password. Any subsequent uses of the app, the user must put in their password to access the diary.  
-  - If the user forgets their password, there will be a “change password option”.  
-  - Passwords can contain any type of characters on a keyboard but must be within 15 characters.  
-  - All password features will be operated using buttons and methods in Android Studio. 
+   - The first time the app is used, it will ask the user to set a password. Any subsequent uses of the app, the user must put in their password to access the diary.  
+   - If the user forgets their password, there will be a “change password option”.  
+   - Passwords can contain any type of characters on a keyboard but must be within 15 characters.  
+   - All password features will be operated using buttons and methods in Android Studio. 
