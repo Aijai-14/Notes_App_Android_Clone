@@ -41,7 +41,7 @@
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <SearchView
-        android:id="@+id/editTextSearch"
+        android:id="@+id/TextSearch"
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:autofillHints="Enter the note you would like to search"

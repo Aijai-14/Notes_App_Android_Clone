@@ -1,10 +1,12 @@
 package com.example.passwordprotecteddiaryapp;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,10 +41,21 @@ public class MenuOfNotes extends AppCompatActivity
             startActivity(intent);
         });
 
-        if (onSearchRequested())
-        {
+        SearchView sV = (SearchView) findViewById(R.id.TextSearch);
 
-        }
+        sV.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+// do something on text submit
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+// do something when text changes
+                return false;
+            }
+        });
     }
 
     public void openTitleScreen(View view)
