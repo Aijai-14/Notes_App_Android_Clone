@@ -10,21 +10,17 @@ __Team Members’ Information (3 Members in Total):__
  
   - __Lecture and Lab Section:__ Section M, Lab 01   
 
---- 
-
- - __Name:__ Andre G. Muyalde 
+- __Name:__ Andre G. Muyalde 
 
   - __York U Email (Eclass Email):__ andmuy21@my.yorku.ca   
 
- - __Lecture and Lab Section:__ Section O, Lab 01   
+  - __Lecture and Lab Section:__ Section O, Lab 01   
 
----
+- __Name:__ Ethan Rei C. Afable   
 
- - __Name:__ Ethan Rei C. Afable   
+  - __York U Email (Eclass Email):__ ethanrei@my.yorku.ca  
 
- - __York U Email (Eclass Email):__ ethanrei@my.yorku.ca  
-
- - __Lecture and Lab Section:__ Section O, Lab 01   
+  - __Lecture and Lab Section:__ Section O, Lab 01   
 
 ---
 
