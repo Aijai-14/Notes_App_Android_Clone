@@ -80,6 +80,10 @@ __Functional Requirements for Project:__
      - bring up the files with the closest filenames if there is no file with the filename (e.g. searched for ‘blue’; returns ‘blue1.txt’ ‘blue2.txt’).  
 
 # Phase 2
+
 [Here is a functional view of all the wireframes together with mobile interactions to access different wireframes (prototype)]( https://www.figma.com/proto/yYpxm9uzGJSHYwdTuoGRsT/Password-Protected-Diary-App?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2  )
+
 [Figma Layouts showing all Wireframes with Arrows]( https://www.figma.com/file/yYpxm9uzGJSHYwdTuoGRsT/Password-Protected-Diary-App?node-id=0%3A1  )
+
 [GitHub Repository:]( https://github.com/duyamn/Tridroid-Developers-Password-Protected-Diary-1022-Project  )
+
