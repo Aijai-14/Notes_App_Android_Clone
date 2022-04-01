@@ -67,11 +67,12 @@ public class NoteEditor extends AppCompatActivity
         }
         else
         {
-            Toast.makeText(NoteEditor.this, "Please save your work.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NoteEditor.this, "Please Save Your Work", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void saveText(View view) {
+    public void saveText(View view)
+    {
         String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
         TextView text = findViewById(R.id.noteText);
 
@@ -92,7 +93,4 @@ public class NoteEditor extends AppCompatActivity
         }
         changed = true;
     }
-
-
-
 }
