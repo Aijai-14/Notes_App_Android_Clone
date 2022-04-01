@@ -4,13 +4,13 @@ __Team Name:__ The Tridroid Developers
 
 __Team Members’ Information (3 Members in Total):__
 
- --- __Name:__ Aijaisarma Sabaratnasarma  
+ - __Name:__ Aijaisarma Sabaratnasarma  
 
  - __York U Email (Eclass Email):__ Aijaysarma14@gmail.com  
  
  - __Lecture and Lab Section:__ Section M, Lab 01   
 
- 
+--- 
 
  - __Name:__ Andre G. Muyalde 
 
