@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity
 
                 if (password.getText().toString().equals(current_password))
                 {
-                    Toast.makeText(MainActivity.this, "Welcome :D", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Welcome: Select a Note", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MenuOfNotes.class);
                     startActivity(intent);
                 }
