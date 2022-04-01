@@ -17,17 +17,16 @@ public class MenuOfNotes extends AppCompatActivity
     public static int count = -1;
 
     public static ArrayList<String> names_list = new ArrayList<>(Arrays.asList("Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6", "Note 7", "Note 8", "Note 9", "Note 10",
-            "Note 11", "Note 12", "Note 13", "Note 14", "Note 15", "Note 16", "Note 17", "Note 18", "Note 19", "Note 20", "Note 21", "Note 22", "Note 23", "Note 24", "Note 25"));
+            "Note 11", "Note 12", "Note 13", "Note 14", "Note 15", "Note 16", "Note 17", "Note 18", "Note 19", "Note 20", "Note 21", "Note 22", "Note 23", "Note 24", "Note 25", ""));
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
+
         ListView listview = findViewById(R.id.listView);
-
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
-
         listview.setAdapter(arrayAdapter);
 
         listview.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -39,9 +38,9 @@ public class MenuOfNotes extends AppCompatActivity
             startActivity(intent);
         });
 
-        if (onSearchRequested())
+        if (!onSearchRequested())
         {
-
+            Toast.makeText(MenuOfNotes.this, "hi", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -50,4 +49,5 @@ public class MenuOfNotes extends AppCompatActivity
         Intent intent = new Intent(MenuOfNotes.this, MainActivity.class);
         startActivity(intent);
     }
+
 }
