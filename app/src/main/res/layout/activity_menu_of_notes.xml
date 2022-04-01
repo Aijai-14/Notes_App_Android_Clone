@@ -11,7 +11,7 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSearch"
+        android:layout_below="@+id/TextSearch"
         android:divider="#1FB3F6"
         android:scrollbars="vertical"
         android:dividerHeight="2dp"
