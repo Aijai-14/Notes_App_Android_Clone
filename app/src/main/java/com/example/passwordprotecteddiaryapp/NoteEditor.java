@@ -16,6 +16,8 @@ import java.io.IOException;
 
 public class NoteEditor extends AppCompatActivity
 {
+    private boolean changed = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,10 +58,17 @@ public class NoteEditor extends AppCompatActivity
         });
     }
 
-    public void openMenuScreen(View view)
-    {
-        Intent intent = new Intent(NoteEditor.this, MenuOfNotes.class);
-        startActivity(intent);
+    public void openMenuScreen(View view) {
+        if (changed)
+        {
+            Intent intent = new Intent(NoteEditor.this, MenuOfNotes.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(NoteEditor.this, "Please save your work.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void saveText(View view) {
@@ -81,5 +90,9 @@ public class NoteEditor extends AppCompatActivity
         catch (IOException e) {
             e.printStackTrace();
         }
+        changed = true;
     }
+
+
+
 }
