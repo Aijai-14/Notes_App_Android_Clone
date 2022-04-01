@@ -45,7 +45,6 @@ public class MenuOfNotes extends AppCompatActivity
         sV.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-// do something on text submit
                 String queryValue = sV.getQuery().toString();
 
                 if (names_list.contains(queryValue))
@@ -63,8 +62,6 @@ public class MenuOfNotes extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String newText) {
-// do something when text changes
-                String queryValue = sV.getQuery().toString();
                 return false;
             }
         });
