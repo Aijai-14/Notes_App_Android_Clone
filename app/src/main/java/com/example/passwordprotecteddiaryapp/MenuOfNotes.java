@@ -51,7 +51,12 @@ public class MenuOfNotes extends AppCompatActivity
                 if (names_list.contains(queryValue))
                 {
                     count = names_list.indexOf(queryValue);
+                    Toast.makeText(MenuOfNotes.this, "Opening Note " + (count + 1), Toast.LENGTH_SHORT).show();
                     openNoteEditor();
+                }
+                else
+                {
+                    Toast.makeText(MenuOfNotes.this, queryValue + " Does Not Exist", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -59,6 +64,7 @@ public class MenuOfNotes extends AppCompatActivity
             @Override
             public boolean onQueryTextChange(String newText) {
 // do something when text changes
+                String queryValue = sV.getQuery().toString();
                 return false;
             }
         });
