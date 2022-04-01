@@ -58,7 +58,8 @@ public class NoteEditor extends AppCompatActivity
         });
     }
 
-    public void openMenuScreen(View view) {
+    public void openMenuScreen(View view)
+    {
         if (changed)
         {
             Intent intent = new Intent(NoteEditor.this, MenuOfNotes.class);
@@ -68,7 +69,6 @@ public class NoteEditor extends AppCompatActivity
         {
             Toast.makeText(NoteEditor.this, "Please save your work.", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void saveText(View view) {

@@ -40,33 +40,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
-    <EditText
+    <SearchView
         android:id="@+id/editTextSearch"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:autofillHints="Enter the note you would like to search"
         android:ems="10"
         android:hint="@string/menu_search"
         android:inputType="textPersonName"
         android:text="@string/menu_search"
         android:textColor="#B3E5FC"
-        app:layout_constraintEnd_toStartOf="@+id/enterSearch"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/enterSearch"
-        android:layout_width="80dp"
-        android:layout_height="64dp"
-        android:backgroundTint="@color/green2"
-        android:fontFamily="@font/andika"
-        android:text="@string/menu_enter_button"
-        android:textColor="#6D4C41"
-        android:textSize="13.5sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

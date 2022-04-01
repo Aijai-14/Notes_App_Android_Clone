@@ -38,6 +38,11 @@ public class MenuOfNotes extends AppCompatActivity
             Intent intent = new Intent(MenuOfNotes.this, NoteEditor.class);
             startActivity(intent);
         });
+
+        if (onSearchRequested())
+        {
+
+        }
     }
 
     public void openTitleScreen(View view)
