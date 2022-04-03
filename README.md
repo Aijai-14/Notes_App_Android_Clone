@@ -87,3 +87,79 @@ __Functional Requirements for Project:__
 
 [GitHub Repository:]( https://github.com/duyamn/Tridroid-Developers-Password-Protected-Diary-1022-Project  )
 
+Technologies and Designs of Classes:
+ 
+Technologies: Android Studio IDE and Java Programming Language.
+ 
+Classes:
+•	MainActivity.java
+•	MenuOfNotes.java
+•	NoteEditer.java
+ 
+Methods/Variables for each Class:
+•	MainActivity.java
+o	Instance variables:
+	Private AlertDialog dialog
+	Private AlertDialog.Builder dialogBuilder
+o	Methods:
+o	Protected void OnCreate(Bundle savedInstanceState) 
+	Creates the Diary title screen to appear on the device. 
+o	Public void createChangePasswordDialog(View v)
+	Opens a prompt for the user to change their password using the dialog and dialogBuilder instance variables. 
+	If an empty string is detected, then the message “Please Enter a Password” is directed to the user. 
+	If a non-empty string is entered, then the string is written to a file called “Password.txt” and the message “Successful Password Change” is directed to the user. 
+o	Public void createEnterPasswordDialog(View v)
+	Opens a prompt to log in to the diary using the dialog and dialogBuilder instance variables.
+	Reads the user set password from “Password.txt” and sets it to a string variable. 
+	If the string variable is equal to what the user typed in, then the diary opens, and the user is directed to the MenuOfNotes screen with a message indicating “Welcome”
+	If the string variable is not equal to what the user types in, then a message saying “Incorrect Password” is directed to the user.  
+
+
+•	MenuOfNotes.java
+o	Instance variables:
+	Public static int count = -1
+	Public static ArrayList<String> names_list = new ArrayList<>() (Contains a Strings of the form “Note [positive number]” where positive number can range from 1-25)
+o	Methods:
+	Protected void onCreate(Bundle savedInstanceState) 
+	Creates an instance of the MenuOfNotes class
+	Populates the MenuOfNotes listView with all 25 notes
+	All notes are clickable and call the openNoteEditor method.
+	Provides a search view that allows the user to quickly access any given note.
+	If the provided note in the searchView query is a valid note name, openNoteEditor is called.
+	Public void openTitleScreen(View v)
+	Goes back to the opening screen of the app
+	Public void openNoteEditor
+	Opens selected note for editing in the app
+ 
+•	NoteEditor.java
+o	Instance Variables:
+	Private boolean changed = false
+o	Methods:
+	Protected void onCreate(Bundle savedInstanceState) 
+	Creates an instance of the NoteEditor class.
+	Retrieves the note number of the current note being edited from the MenuOfNotes class (from the global count variable).
+	Retrieves the text of the specified note from a .txt file of the same name and places it within the textView (of id noteText). 
+	Public void openMenuOfScreen(View view) 
+	Creates a menu of Notes object and brings the user back to the menu of notes layout.
+	Urges the user to save if they haven’t done so.
+	Public void saveText(View view)
+	Rewrites whatever current text is inside the textView (of id noteText) onto the file named “Note #.txt” where # is the number of the note.
+
+
+Changes from previous design (Phase 1 and 2 Changes): 
+1.	There is instead a finite number of notes each named “Note #” where “#” ranges from 1-25 and a user is unable to add or delete more notes or the existing ones (Design point 3 and 4 from Phase 1). This was changed due to difficulties in finding how to save an infinite/unknown number of notes (text files) and to consistently update information in those text files. Instead, we now have 25 notes each with a pre-set name where the text inside each note can be changed (more text can be added or erased) at any time instead of creating and deleting new notes when a user wants to add new information or delete existing ones.    
+
+2.	Omitted the option to retrieve past notes (Design point 7 from Phase 1). Like Change 1 this was also changed as it was difficult to determine how to save have multiple versions of a note in either 1 or multiple text file. As well as 2D string arrays were attempted to be used but the data inside them kept getting erased every time a user loaded up the app. Thus, this idea was scraped. 
+
+3.	Changed the “texting” based style of updating notes in favour of editing a single scrollable textView (Design point 9 from Phase 1). This was only changed due to aesthetic reasons. Using the “texting” based style made the UI look very clustered and the listViews used for texting weren’t ideal for changing the text in notes if a user wanted to change the information in them. Hence, we made it more like a word document where you have one vertically scrollable textview that can have as much text as the user wants.  
+
+4.	Removed the functionality of searching for the closest search result (As all notes are named “Note #”). The Search bar is functional, but only when the name of 1 of the 25 existing notes are entered. For example, if any string other than strings of the form “Note [1-25]” is entered then the search button does nothing but when a string of the form “Note [1-25]“ is entered then when the search button is clicked the app opens that note up. The main difference from here is that the search bar doesn’t filter out the names as the user types them mainly because all the names are almost the same except for the number. 
+
+5.	Based on the above 4 changes to Phase 1, in Phase 2 here are the main differences. The Note deletion page and the Note history page are not implemented as those features, we scraped due to Change 1 and 2. The Menu of Notes page and Title Screen are practically the exact as the Phase 2 layout with just minor UI changes and shifting the positions of some buttons around. Likewise, the NoteEditor Screen has a different UI but its function and how it works is mostly the same. The connections between layouts are also preserved with the only difference being buttons designed to go to certain screens have been removed due to some features being changed, for example “plus sign” button removed as adding notes is not possible.        
+
+     
+
+
+![image](https://user-images.githubusercontent.com/88597896/161405847-43d12fe5-00d6-4d7d-922d-8295909cb0a1.png)
+
+
