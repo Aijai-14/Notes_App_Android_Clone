@@ -95,9 +95,9 @@ Technologies and Designs of Classes:
 Technologies: Android Studio IDE and Java Programming Language.
  
 Classes:
-•	MainActivity.java
-•	MenuOfNotes.java
-•	NoteEditer.java
+ - MainActivity.java
+ - MenuOfNotes.java
+ - 	NoteEditer.java
  
 Methods/Variables for each Class:
  - MainActivity.java	
@@ -151,24 +151,14 @@ Methods/Variables for each Class:
   
 # Changes from previous design (Phase 1 and 2 Changes): 
   
-1.	
-There is instead a finite number of notes each named “Note #” where “#” ranges from 1-25 and a user is unable to add or delete more notes or the existing ones (Design point 3 and 4 from Phase 1). This was changed due to difficulties in finding how to save an infinite/unknown number of notes (text files) and to consistently update information in those text files. Instead, we now have 25 notes each with a pre-set name where the text inside each note can be changed (more text can be added or erased) at any time instead of creating and deleting new notes when a user wants to add new information or delete existing ones.    
+1.	There is instead a finite number of notes each named “Note #” where “#” ranges from 1-25 and a user is unable to add or delete more notes or the existing ones (Design point 3 and 4 from Phase 1). This was changed due to difficulties in finding how to save an infinite/unknown number of notes (text files) and to consistently update information in those text files. Instead, we now have 25 notes each with a pre-set name where the text inside each note can be changed (more text can be added or erased) at any time instead of creating and deleting new notes when a user wants to add new information or delete existing ones.    
 
-2.	
-Omitted the option to retrieve past notes (Design point 7 from Phase 1). Like Change 1 this was also changed as it was difficult to determine how to save have multiple versions of a note in either 1 or multiple text file. As well as 2D string arrays were attempted to be used but the data inside them kept getting erased every time a user loaded up the app. Thus, this idea was scraped. 
+2.	Omitted the option to retrieve past notes (Design point 7 from Phase 1). Like Change 1 this was also changed as it was difficult to determine how to save have multiple versions of a note in either 1 or multiple text file. As well as 2D string arrays were attempted to be used but the data inside them kept getting erased every time a user loaded up the app. Thus, this idea was scraped. 
 
-3.	
-Changed the “texting” based style of updating notes in favour of editing a single scrollable textView (Design point 9 from Phase 1). This was only changed due to aesthetic reasons. Using the “texting” based style made the UI look very clustered and the listViews used for texting weren’t ideal for changing the text in notes if a user wanted to change the information in them. Hence, we made it more like a word document where you have one vertically scrollable textview that can have as much text as the user wants.  
+3.	Changed the “texting” based style of updating notes in favour of editing a single scrollable textView (Design point 9 from Phase 1). This was only changed due to aesthetic reasons. Using the “texting” based style made the UI look very clustered and the listViews used for texting weren’t ideal for changing the text in notes if a user wanted to change the information in them. Hence, we made it more like a word document where you have one vertically scrollable textview that can have as much text as the user wants.  
 
-4.	
-Removed the functionality of searching for the closest search result (As all notes are named “Note #”). The Search bar is functional, but only when the name of 1 of the 25 existing notes are entered. For example, if any string other than strings of the form “Note [1-25]” is entered then the search button does nothing but when a string of the form “Note [1-25]“ is entered then when the search button is clicked the app opens that note up. The main difference from here is that the search bar doesn’t filter out the names as the user types them mainly because all the names are almost the same except for the number. 
+4.	Removed the functionality of searching for the closest search result (As all notes are named “Note #”). The Search bar is functional, but only when the name of 1 of the 25 existing notes are entered. For example, if any string other than strings of the form “Note [1-25]” is entered then the search button does nothing but when a string of the form “Note [1-25]“ is entered then when the search button is clicked the app opens that note up. The main difference from here is that the search bar doesn’t filter out the names as the user types them mainly because all the names are almost the same except for the number. 
 
-5.	
-Based on the above 4 changes to Phase 1, in Phase 2 here are the main differences. The Note deletion page and the Note history page are not implemented as those features, we scraped due to Change 1 and 2. The Menu of Notes page and Title Screen are practically the exact as the Phase 2 layout with just minor UI changes and shifting the positions of some buttons around. Likewise, the NoteEditor Screen has a different UI but its function and how it works is mostly the same. The connections between layouts are also preserved with the only difference being buttons designed to go to certain screens have been removed due to some features being changed, for example “plus sign” button removed as adding notes is not possible.        
-
-     
-
-
-![image](https://user-images.githubusercontent.com/88597896/161405847-43d12fe5-00d6-4d7d-922d-8295909cb0a1.png)
+5.	Based on the above 4 changes to Phase 1, in Phase 2 here are the main differences. The Note deletion page and the Note history page are not implemented as those features, we scraped due to Change 1 and 2. The Menu of Notes page and Title Screen are practically the exact as the Phase 2 layout with just minor UI changes and shifting the positions of some buttons around. Likewise, the NoteEditor Screen has a different UI but its function and how it works is mostly the same. The connections between layouts are also preserved with the only difference being buttons designed to go to certain screens have been removed due to some features being changed, for example “plus sign” button removed as adding notes is not possible.        
 
 
