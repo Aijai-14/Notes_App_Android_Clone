@@ -23,17 +23,19 @@ public class NoteEditor extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_note_editer);
+
         TextView n = findViewById(R.id.noteName);
         TextView text = findViewById(R.id.noteText);
 
-        int num = MenuOfNotes.count+1;
+        int num = MenuOfNotes.count + 1;
         String noteName = "Note " + (MenuOfNotes.count + 1) + ".txt";
 
         Context context = getApplicationContext();
         File location =  context.getFilesDir();
         File note_file = new File(location, noteName);
 
-        addOnContextAvailableListener(context1 -> {
+        addOnContextAvailableListener(context1 ->
+        {
             int length = (int) note_file.length();
 
             byte[] bytes = new byte[length];
@@ -65,6 +67,7 @@ public class NoteEditor extends AppCompatActivity
             Intent intent = new Intent(NoteEditor.this, MenuOfNotes.class);
             startActivity(intent);
         }
+
         else
         {
             Toast.makeText(NoteEditor.this, "Please Save Your Work", Toast.LENGTH_SHORT).show();
@@ -88,7 +91,9 @@ public class NoteEditor extends AppCompatActivity
             stream.close();
             Toast.makeText(NoteEditor.this, "Updated Note " + (MenuOfNotes.count + 1), Toast.LENGTH_SHORT).show();
         }
-        catch (IOException e) {
+
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         changed = true;

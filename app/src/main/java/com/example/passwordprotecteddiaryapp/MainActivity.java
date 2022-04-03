@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity
         dialog = dialogBuilder.create();
         dialog.show();
 
-        confirm.setOnClickListener(view -> {
+        confirm.setOnClickListener(view ->
+        {
             Context context = getApplicationContext();
             File location =  context.getFilesDir();
             File password_file = new File(location, "Password.txt");
@@ -50,13 +51,16 @@ public class MainActivity extends AppCompatActivity
             if (!password.getText().toString().equals(""))
             {
                 FileOutputStream stream;
+
                 try
                 {
                     stream = new FileOutputStream(password_file);
                     stream.write(password.getText().toString().getBytes());
                     stream.close();
                 }
-                catch (IOException e) {
+
+                catch (IOException e)
+                {
                     e.printStackTrace();
                 }
 
@@ -69,8 +73,7 @@ public class MainActivity extends AppCompatActivity
                 message.setText(R.string.enter_new_pass);
                 Toast.makeText(MainActivity.this, "Please Enter a Password", Toast.LENGTH_SHORT).show();
             }
-        }
-        );
+        });
     }
 
     public void createEnterPasswordDialog(View v)
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity
                     reader.read(bytes);
                     reader.close();
                 }
+
                 catch (IOException e)
                 {
                     e.printStackTrace();
@@ -125,7 +129,6 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this, "Incorrect Password: Please Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-        );
+        });
     }
 }

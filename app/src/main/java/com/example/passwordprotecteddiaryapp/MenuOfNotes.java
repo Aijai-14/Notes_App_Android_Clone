@@ -1,6 +1,5 @@
 package com.example.passwordprotecteddiaryapp;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,13 +25,13 @@ public class MenuOfNotes extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_notes);
+
         ListView listview = findViewById(R.id.listView);
-
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, names_list);
-
         listview.setAdapter(arrayAdapter);
 
-        listview.setOnItemClickListener((adapterView, view, i, l) -> {
+        listview.setOnItemClickListener((adapterView, view, i, l) ->
+        {
             count = i;
             int num = count + 1;
 
@@ -40,11 +39,13 @@ public class MenuOfNotes extends AppCompatActivity
             openNoteEditor();
         });
 
-        SearchView sV = (SearchView) findViewById(R.id.TextSearch);
+        SearchView sV = findViewById(R.id.TextSearch);
 
-        sV.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        sV.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String query)
+            {
                 String queryValue = sV.getQuery().toString();
 
                 if (names_list.contains(queryValue))
@@ -53,6 +54,7 @@ public class MenuOfNotes extends AppCompatActivity
                     Toast.makeText(MenuOfNotes.this, "Opening Note " + (count + 1), Toast.LENGTH_SHORT).show();
                     openNoteEditor();
                 }
+
                 else
                 {
                     Toast.makeText(MenuOfNotes.this, queryValue + " Does Not Exist", Toast.LENGTH_SHORT).show();
