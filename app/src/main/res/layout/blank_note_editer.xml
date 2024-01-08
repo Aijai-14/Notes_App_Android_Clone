@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <MultiAutoCompleteTextView
         android:id="@+id/noteText"
         android:layout_width="match_parent"

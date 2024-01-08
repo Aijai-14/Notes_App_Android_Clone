@@ -92,6 +92,7 @@ public class NoteEditor extends AppCompatActivity
             Toast.makeText(NoteEditor.this, "Updated Note " + (MenuOfNotes.count + 1), Toast.LENGTH_SHORT).show();
         }
 
+
         catch (IOException e)
         {
             e.printStackTrace();
