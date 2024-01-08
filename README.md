@@ -1,4 +1,5 @@
-# Tridroid Developers Password Protected Diary 1022 Project
+# Tridroid Developers Password Protected Diary 1022 Project: Notes App Android Clone
+A mobile app designed using Java, XML and Android Studio that recreates a functional Notes app that comes with standard Apple and Android devices. This app was built as a final project for our Object-Oriented Programming Course.
 
 # Phase 0:
 __Team Name:__ The Tridroid Developers  
