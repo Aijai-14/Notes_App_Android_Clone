@@ -1,0 +1,74 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.passwordprotecteddiaryapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:5:5-80
+11-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:5:22-77
+12
+13    <application
+13-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:7:5-34:19
+14        android:allowBackup="true"
+14-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.5.0] /Users/aijay/.gradle/caches/transforms-3/b1fe9740f6c86f0b7649a763c3bf2b85/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:extractNativeLibs="false"
+18        android:icon="@mipmap/ic_launcher"
+18-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:9:9-43
+19        android:label="@string/app_name"
+19-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:10:9-41
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:11:9-54
+21        android:supportsRtl="true"
+21-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:12:9-35
+22        android:testOnly="true"
+23        android:theme="@style/Theme.PasswordProtectedDiaryApp" >
+23-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:13:9-63
+24        <activity
+24-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:14:9-16:40
+25            android:name="com.example.passwordprotecteddiaryapp.NoteEditor"
+25-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:15:13-39
+26            android:exported="false" />
+26-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:16:13-37
+27        <activity
+27-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:17:9-19:40
+28            android:name="com.example.passwordprotecteddiaryapp.MenuOfNotes"
+28-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:18:13-40
+29            android:exported="false" />
+29-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:19:13-37
+30        <activity
+30-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:20:9-28:20
+31            android:name="com.example.passwordprotecteddiaryapp.MainActivity"
+31-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:21:13-41
+32            android:exported="true" >
+32-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:22:13-36
+33            <intent-filter>
+33-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:23:13-27:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:24:17-69
+34-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:24:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:26:17-77
+36-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:26:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <meta-data
+40-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:30:9-32:57
+41            android:name="preloaded_fonts"
+41-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:31:13-43
+42            android:resource="@array/preloaded_fonts" />
+42-->/Users/aijay/AndroidStudioProjects/Tridroid-Developers-Password-Protected-Diary-1022-Project/app/src/main/AndroidManifest.xml:32:13-54
+43    </application>
+44
+45</manifest>
